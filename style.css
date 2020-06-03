@@ -12,30 +12,37 @@
     height: 100vh;
 }
 
-form{
-    width:600px;
+.task-form{
+    width:500px;
 }
 
-form .form-control{
-    margin-bottom: 10px;
+.task-form .form-control{
+    width: 100%;
+    margin: 10px 0;
 }
 
-form button{
-    padding: 12px 14px;
+.task-form button{
+    padding: 7px;
 }
 
-form .show-all-tasks-btn.show{
+.task-form input{
+    border: 1px solid #dedede;
+    padding: 8px;
+    width: 79%;
+}
+
+.task-form .show-all-tasks-btn.show{
     display: block;
     width: 95%;
 }
 
 
-form .show-all-tasks-btn{
+.task-form .show-all-tasks-btn{
     display: none;
     width: 95%;
 }
 
-form textarea{
+.task-form textarea{
     border: 1px solid #dedede;
     resize: none;
     height: 400px;
@@ -56,10 +63,4 @@ ul{
 ul li{
     border-bottom: 1px solid #dedede;
     padding: 10px;
-}
-
-form input{
-    border: 1px solid #dedede;
-    padding: 12px;
-    width: 80%;
 }

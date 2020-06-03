@@ -12,7 +12,7 @@ const taskList = [];
 
 
                                                 //Event handlers
-//Add new task to dom                                                
+//Create new task                                            
 function addNewTask(event){
     event.preventDefault();
 
@@ -25,8 +25,9 @@ function addNewTask(event){
         //add task to dom
         addTaskToDom(newTaskName);
 
-        //clear input
+        //clear and focus input
         newTask.value = '';
+        newTask.focus();
     }
 }
 
