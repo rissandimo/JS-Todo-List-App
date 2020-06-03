@@ -39,6 +39,15 @@ form textarea{
     width: 95%;
 }
 
+ul{
+    list-style: none;
+}
+
+ul li{
+    border-bottom: 1px solid #dedede;
+    padding: 10px;
+}
+
 form input{
     border: 1px solid #dedede;
     padding: 12px;
