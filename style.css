@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+form{
+    width:600px;
+}
+
+form button{
+    padding: 12px 14px;
+
+}
+
+form input{
+    border: 1px solid #dedede;
+    padding: 12px;
+    width: 80%;
+}
