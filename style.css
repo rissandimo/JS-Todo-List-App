@@ -22,7 +22,17 @@ form .form-control{
 
 form button{
     padding: 12px 14px;
+}
 
+form .show-all-tasks-btn.show{
+    display: block;
+    width: 95%;
+}
+
+
+form .show-all-tasks-btn{
+    display: none;
+    width: 95%;
 }
 
 form textarea{

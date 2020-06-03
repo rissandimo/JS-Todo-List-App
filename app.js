@@ -3,6 +3,7 @@ const newTaskBtn = document.getElementById('new-task-btn');
 const newTask = document.getElementById('new-task');
 const searchTask = document.getElementById('search-task');
 const searchTaskBtn = document.getElementById('search-task-btn');
+const showAllTasksButton = document.getElementById('show-all-tasks-btn');
 const taskListDom = document.getElementById('task-list');
 
 //App properties
@@ -43,19 +44,17 @@ function addTaskToDom(newTaskName){
 
 
 function filterTasks(event){
-    event.preventDefault();
+    event.preventDefault();    
 
+            //show button to show all tasks
+  //  document.querySelector('.show-all-tasks-btn').classList.add('show');
     const filteredTasks = [];
 
     //get a list of all tasks
     const taskListDOM = document.querySelector('.task-list');
     const tasks = taskListDOM.querySelectorAll('.task-item');
     
-    // tasks.forEach(task => {
-    //     let taskName = task.innerHTML;
-
-       
-    // });
+    //search for queried task
     const searchQuery = searchTask.value;
     if(searchQuery != ''){
         tasks.forEach(task => {
@@ -74,6 +73,10 @@ function filterTasks(event){
 
         //add filtered task to dom
         filteredTasks.forEach(addTaskToDom);
+
+        //show all tasks button
+        showAllTasksButton.classList.add('show');
+
     }    
     
 }
