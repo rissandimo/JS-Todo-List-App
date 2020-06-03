@@ -18,16 +18,21 @@ function addNewTask(event){
     const newTaskName = newTask.value;
     if(newTask != ''){
 
-        //add task to list
+        //add task to array
         taskList.push(newTaskName);
 
-        //create task element
+        //create task element and assign name
         const newTaskItem = document.createElement('li');
-
-        //add task name to item
         newTaskItem.innerHTML = `${newTaskName}`;
+
+        //add class
+        newTaskItem.className = 'task-item';
         
+        //add task to dom
         taskListDom.appendChild(newTaskItem);
+
+        //clear input
+        newTask.value = '';
     }
 }
 
@@ -37,14 +42,20 @@ function filterTasks(event){
 
     const filteredTasks = [];
 
-    console.log(`current tasks: ${taskList}`);
+    //get a list of all tasks
+    const taskListDOM = document.querySelector('.task-list');
+    const tasks = taskListDOM.querySelectorAll('.task-item');
+    
+    tasks.forEach(task => console.log(task.innerHTML));
+    
+    
     
 
     const searchQuery = searchTask.value;
     if(searchQuery != ''){
         taskList.forEach(task => {
            if( task.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1){
-               console.log(`Match found: ${searchQuery}`);
+               console.log(`Match found: ${task}`);
                filteredTasks.push(searchQuery);
            }
            else{
@@ -54,7 +65,7 @@ function filterTasks(event){
         });
     }
 
-    console.log(`filtered tasks: ${filterTasks}`);
+    console.log(`filtered tasks: ${filteredTasks}`);
 
     
     
