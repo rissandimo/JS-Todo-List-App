@@ -81,9 +81,21 @@ function filterTasks(event){
     
 }
 
+//clear all filtered task and actual task list
+function showAllTasks(event){
+    event.preventDefault();
+
+    taskListDom.innerHTML = '';
+
+    taskList.forEach(addTaskToDom);
+
+    showAllTasksButton.classList.remove('show');
+}
+
 
 
 
 //Event listeners
 newTaskBtn.addEventListener('click', addNewTask);
 searchTaskBtn.addEventListener('click', filterTasks);
+showAllTasksButton.addEventListener('click', showAllTasks);
