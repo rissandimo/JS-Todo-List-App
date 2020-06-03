@@ -21,19 +21,24 @@ function addNewTask(event){
         //add task to array
         taskList.push(newTaskName);
 
-        //create task element and assign name
-        const newTaskItem = document.createElement('li');
-        newTaskItem.innerHTML = `${newTaskName}`;
-
-        //add class
-        newTaskItem.className = 'task-item';
-        
         //add task to dom
-        taskListDom.appendChild(newTaskItem);
+        addTaskToDom(newTaskName);
 
         //clear input
         newTask.value = '';
     }
+}
+
+function addTaskToDom(newTaskName){
+    //create task element and assign name
+    const newTaskItem = document.createElement('li');
+    newTaskItem.innerHTML = `${newTaskName}`;
+
+    //add class
+    newTaskItem.className = 'task-item';
+    
+    //add task to dom
+    taskListDom.appendChild(newTaskItem);
 }
 
 
@@ -46,28 +51,30 @@ function filterTasks(event){
     const taskListDOM = document.querySelector('.task-list');
     const tasks = taskListDOM.querySelectorAll('.task-item');
     
-    tasks.forEach(task => console.log(task.innerHTML));
-    
-    
-    
+    // tasks.forEach(task => {
+    //     let taskName = task.innerHTML;
 
+       
+    // });
     const searchQuery = searchTask.value;
     if(searchQuery != ''){
-        taskList.forEach(task => {
-           if( task.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1){
-               console.log(`Match found: ${task}`);
-               filteredTasks.push(searchQuery);
-           }
-           else{
-               console.log("no match found");
-               
+        tasks.forEach(task => {
+        const taskName = task.innerHTML;
+           if( taskName.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1){
+               filteredTasks.push(taskName);
            }
         });
     }
 
-    console.log(`filtered tasks: ${filteredTasks}`);
+    // check if matches found - display tasks; otherwise inform of no matches
+    if(filteredTasks.length > 0){
 
-    
+        //clear current task list
+        taskListDOM.innerHTML = '';
+
+        //add filtered task to dom
+        filteredTasks.forEach(addTaskToDom);
+    }    
     
 }
 
