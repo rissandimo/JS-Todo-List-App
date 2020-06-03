@@ -16,9 +16,27 @@ form{
     width:600px;
 }
 
+form .form-control{
+    margin-bottom: 10px;
+}
+
 form button{
     padding: 12px 14px;
 
+}
+
+form textarea{
+    border: 1px solid #dedede;
+    resize: none;
+    height: 400px;
+    outline: 0;
+    width: 95%;
+}
+
+.task-list{
+    border: 1px solid #dedede;
+    height: 400px;
+    width: 95%;
 }
 
 form input{

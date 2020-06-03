@@ -10,16 +10,30 @@
 <body>
 
     <div class="container">
-                                <!-- Add New Task -->
         <form id="form" class="form">
+            
+            
+                                            <!-- Add New Task -->
             <div class="form-control">
-                <input type="text" id="new-task" placeholder="Add New Task">
+                <input type="text" id="new-task" placeholder="Add new task">
                 <button type="submit">
                     <i class="fa fa-plus"></i>
                     Submit</button>
             </div>
+
+            <!-- Task List -->
+            <ul class="task-list"></ul>
+                                        <!-- Search For Task -->
+            <div class="form-control">
+                <input type="text" id="search-task" placeholder="Search task">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                    Search
+                </button>
+            </div>
         </form>
     </div>
     
+    <script src="app.js"></script>
 </body>
 </html>
