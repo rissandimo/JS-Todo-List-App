@@ -6,24 +6,27 @@ const searchTaskBtn = document.getElementById('search-task-btn');
 const showAllTasksButton = document.getElementById('show-all-tasks-btn');
 const taskListDom = document.getElementById('task-list');
 
-//App properties
-const taskList = [];
-
 
 
                                                 //Event handlers
 //Create new task                                            
 function addNewTask(event){
     event.preventDefault();
-
+    let taskList;
     const newTaskName = newTask.value;
     if(newTask != ''){
+
+        //retrieve tasks from local storage
+        taskList = retrieveTaskFromLocalStorage();
 
         //add task to array
         taskList.push(newTaskName);
 
         //add task to dom
         addTaskToDom(newTaskName);
+
+        //add task to local storage
+        addTaskToLocalStorage(newTaskName);
 
         //clear and focus input
         newTask.value = '';
@@ -41,6 +44,52 @@ function addTaskToDom(newTaskName){
     
     //add task to dom
     taskListDom.appendChild(newTaskItem);
+}
+
+function addTaskToLocalStorage(newTaskName){
+
+    let taskList;
+
+    //retrieve local storage
+    const currentTasks = localStorage.getItem('tasks');
+    if(currentTasks === null){ // no tasks - create empty storage
+        taskList = [];
+    }
+    else{
+        taskList = JSON.parse(localStorage.getItem('tasks')); // assign local storage to array
+    }
+
+    //add new task to array
+    taskList.push(newTaskName);
+
+    //save array to local storage
+    localStorage.setItem('tasks', JSON.stringify(taskList));
+    
+}
+
+function loadTasksAndRenderToDOM(){
+
+    //retrieve tasks from LS
+    const tasks = retrieveTaskFromLocalStorage();
+
+    //traverse tasks and add to DOM
+    tasks.forEach(addTaskToDom);
+
+}
+
+function retrieveTaskFromLocalStorage(){
+    let taskList;
+
+    //retrieve local storage
+    const currentTasks = localStorage.getItem('tasks');
+    if(currentTasks === null){ // no tasks - create empty storage
+        taskList = [];
+    }
+    else{
+        taskList = JSON.parse(localStorage.getItem('tasks')); // assign local storage to array
+    }
+
+    return taskList;
 }
 
 
@@ -94,9 +143,10 @@ function showAllTasks(event){
 }
 
 
-
-
 //Event listeners
 newTaskBtn.addEventListener('click', addNewTask);
 searchTaskBtn.addEventListener('click', filterTasks);
 showAllTasksButton.addEventListener('click', showAllTasks);
+
+//load tasks when app starts
+document.addEventListener('DOMContentLoaded', loadTasksAndRenderToDOM);
