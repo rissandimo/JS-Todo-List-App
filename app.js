@@ -9,7 +9,13 @@ const taskListDom = document.getElementById('task-list');
 
 
                                                 //Event handlers
-//Create new task                                            
+
+/*
+Retrieve task name
+Retrieve current tasks saved in local storage - if any
+Add new to dom
+Save local storage
+*/                                                
 function addNewTask(event){
     event.preventDefault();
     let taskList;
@@ -35,13 +41,15 @@ function addNewTask(event){
 }
 
 function addTaskToDom(newTaskName){
+
     //create task element and assign name
     const newTaskItem = document.createElement('li');
-    newTaskItem.innerHTML = `${newTaskName}`;
 
-    //add class
+    //add class and add delete button
     newTaskItem.className = 'task-item';
-    
+    newTaskItem.innerHTML = `${newTaskName}
+    <button class="delete-item">X</button>`;
+
     //add task to dom
     taskListDom.appendChild(newTaskItem);
 }

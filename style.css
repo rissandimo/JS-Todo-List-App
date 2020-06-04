@@ -12,6 +12,7 @@
     height: 100vh;
 }
 
+
 .task-form{
     width:500px;
 }
@@ -63,4 +64,12 @@ ul{
 ul li{
     border-bottom: 1px solid #dedede;
     padding: 10px;
+    position: relative;
+}
+
+li .delete-item{
+    height:30px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
