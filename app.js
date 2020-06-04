@@ -20,8 +20,7 @@ function addNewTask(event){
     event.preventDefault();
     let taskList;
     const newTaskName = newTask.value;
-    if(newTask != ''){
-
+    if(newTaskName.trim() !== ''){
         //retrieve tasks from local storage
         taskList = retrieveTaskFromLocalStorage();
 
@@ -179,7 +178,7 @@ function showAllTasks(event){
     event.preventDefault();
 
     const taskList = retrieveTaskFromLocalStorage();
-    
+
     taskListDom.innerHTML = '';
 
     taskList.forEach(addTaskToDom);
@@ -189,8 +188,11 @@ function showAllTasks(event){
 
 
 //Event listeners
+
 newTaskBtn.addEventListener('click', addNewTask);
+
 searchTaskBtn.addEventListener('click', filterTasks);
+
 showAllTasksButton.addEventListener('click', showAllTasks);
 
 //load tasks when app starts
