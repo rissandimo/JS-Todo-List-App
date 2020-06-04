@@ -77,7 +77,18 @@ function addTaskToLocalStorage(newTaskName){
 
 function deleteTask(e){
     const targetClicked = e.target;
+    let taskName;
+
+
+    //if delete button clicked
     if(targetClicked.className === 'delete-item'){
+        //remove task from local storage
+        taskName = targetClicked.parentElement.textContent.replace('X', '');     
+      //  console.log(`task name: ${taskName}`);
+        
+        removeTaskFromLocalStorage(taskName);
+
+        //remove task from DOM
         targetClicked.parentElement.remove();        
     }
     
@@ -106,6 +117,22 @@ function retrieveTaskFromLocalStorage(){
     }
 
     return taskList;
+}
+
+function removeTaskFromLocalStorage(taskName){    
+   
+    //retrieve tasks saved in local storage
+   let currentTasks = retrieveTaskFromLocalStorage();
+
+   //remove task from list
+   currentTasks.forEach( function(task, currentIndex) {
+        if(task.trim() === taskName.trim()){
+            currentTasks.splice(currentIndex, 1);
+        }
+   });
+
+   //save tasks to local storage
+    localStorage.setItem('tasks', JSON.stringify(currentTasks));
 }
 
 
