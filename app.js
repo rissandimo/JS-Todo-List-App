@@ -178,6 +178,8 @@ function filterTasks(event){
 function showAllTasks(event){
     event.preventDefault();
 
+    const taskList = retrieveTaskFromLocalStorage();
+    
     taskListDom.innerHTML = '';
 
     taskList.forEach(addTaskToDom);
