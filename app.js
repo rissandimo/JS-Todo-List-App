@@ -75,6 +75,14 @@ function addTaskToLocalStorage(newTaskName){
     
 }
 
+function deleteTask(e){
+    const targetClicked = e.target;
+    if(targetClicked.className === 'delete-item'){
+        targetClicked.parentElement.remove();        
+    }
+    
+}
+
 function loadTasksAndRenderToDOM(){
 
     //retrieve tasks from LS
@@ -158,3 +166,6 @@ showAllTasksButton.addEventListener('click', showAllTasks);
 
 //load tasks when app starts
 document.addEventListener('DOMContentLoaded', loadTasksAndRenderToDOM);
+
+//remove task 
+taskListDom.addEventListener('click', deleteTask);
